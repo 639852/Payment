@@ -1,0 +1,71 @@
+// Миксины
+@mixin font($font_name, $file_name, $weight, $style) {
+	@font-face {
+		font-family: $font_name;
+		font-display: swap;
+		src: url("../fonts/#{$file_name}.woff") format("woff"), url("../fonts/#{$file_name}.woff2") format("woff2");
+		font-weight: #{$weight};
+		font-style: #{$style};
+	}
+}
+
+// Импорты
+@import "fonts";
+@import "normalize";
+
+// Переменные
+$main-color: #1C154E;
+$secondary-color: #23C967;
+$additional-color: #D0D3E2;
+
+// Шаблоны
+%main-font {
+	font-family: "Gilroy", sans-serif;
+	font-size: 16px;
+  font-weight: 500;
+}
+%secondary-font {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 700;
+}
+
+body {
+	@extend %main-font;
+	color: $main-color;
+	&.lock {
+		overflow: hidden;
+	}
+}
+
+a {
+  color: $main-color;
+}
+
+input::-webkit-input-placeholder {
+	color: $main-color;
+	opacity: 1;
+	transition: .3s;
+}
+
+input:focus::-webkit-input-placeholder {
+	transform: translateY(15px);
+	opacity: 0;
+	transition: .3s .1s;
+}
+
+h2 {
+	@extend %secondary-font;
+	font-size: 18px;
+}
+
+img {
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+.container {
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 0 15px;
+	position: relative;
+}
